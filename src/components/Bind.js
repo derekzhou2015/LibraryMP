@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
 import Exception from '../common/Exception';
-import '../css/card-bind.css';
+import Toptips from '../components/Toptips';
+
 
 const {
     Form,
@@ -12,8 +13,7 @@ const {
     Label,
     CellBody,
     ButtonArea,
-    Button,
-    Toptips
+    Button
 } = WeUI
 
 class Bind extends Component {
@@ -21,16 +21,10 @@ class Bind extends Component {
     constructor(props){
         super(props);
         this.state = {
-            showWarn:false,
-            warnTime:null,
-            warnInfo:null
-        }
-    }
 
-    componentWillUnmount() {
-        this.state.warnTime && clearTimeout(this.state.warnTime);
-    }
-    
+        }
+        this.toptip = React.createRef();
+    }  
 
     handleClick = e => {
         e.preventDefault();
@@ -47,30 +41,16 @@ class Bind extends Component {
             
         }catch(e){
             console.log(e);
-            this.showWarn(e.message);
+            this.toptip.show(e.message);
             e.focus();
         }
         
     }
 
-    showWarn(msg) {
-        this.setState({
-            showWarn: true,
-            warnInfo:msg,
-            warnTime: setTimeout(() => {
-                this.setState({
-                    showWarn: false,
-                    warnInfo: null
-                })
-            }, 2000)
-        })
-    }
-
-
     render() {
         return (
             <div>
-                <div className='logo'>
+                <div className='bind-logo{'>
                     <img src='../images/logo.png' alt='222' />
                 </div>
                 <CellsTitle>请用图书馆借阅证账号和密码登录</CellsTitle>
@@ -107,7 +87,7 @@ class Bind extends Component {
                         绑定
                     </Button>
                 </ButtonArea>
-                <Toptips type="warn" show={this.state.showWarn}>{this.state.warnInfo}</Toptips>
+                <Toptips ref={ref=>this.toptip=ref} type='warn'/>
             </div>
         );
     }
