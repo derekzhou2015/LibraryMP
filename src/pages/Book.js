@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
-import Dialog from '../components/Dialog';
-
-
+import Footer from '../components/Footer';
 
 const {
     Page,
@@ -36,7 +34,9 @@ class Book extends Component {
             book:book
         }
     }
-
+    componentDidMount() {
+        console.log(window.innerHeight,document.body.scrollHeight);
+    }
     render() {
         return (
             <Page infiniteLoader={false} ptr = {true}  transition={true}>
@@ -70,7 +70,7 @@ class Book extends Component {
                         </section>
                     </section>
                 </Article>
-                <Dialog ref={ref=>this.dialog=ref}/>
+                <Footer/>
             </Page>
         );
     }

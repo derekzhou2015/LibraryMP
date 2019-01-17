@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-import 'weui';
-import 'react-weui/build/packages/react-weui.css';
 import './css/style.css';
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

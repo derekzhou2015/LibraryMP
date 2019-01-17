@@ -17,42 +17,42 @@ class AboutGrids extends Component {
                 label: '本馆介绍',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/about');
                 }
             }, {
                 icon: <img src = 'images/icon32.png' alt = '读者须知' /> ,
                 label: '读者须知',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/notice');
                 }
             }, {
                 icon: <img src = 'images/icon33.png' alt = '开放时间' /> ,
                 label: '开放时间',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/opening');
                 }
             }, {
                 icon: <img src = 'images/icon34.png' alt = '借阅区介绍' /> ,
                 label: '借阅区介绍',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/area');
                 }
             }, {
                 icon: <img src = 'images/icon35.png' alt = '本馆导航' /> ,
                 label: '本馆导航',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/nav');
                 }
             }, {
                 icon: <img src = 'images/icon36.png' alt = '最新公告' /> ,
                 label: '最新公告',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/news');
                 }
             }, {
                 icon: <img src = 'images/icon37.png' alt = '常见问题' /> ,
@@ -66,14 +66,14 @@ class AboutGrids extends Component {
                 label: '电子地图',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/map');
                 }
             }, {
                 icon: <img src = 'images/icon39.png' alt = '联系我们' /> ,
                 label: '联系我们',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/us');
                 }
             }]
         })

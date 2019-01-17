@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
-import Dialog from '../components/Dialog';
+import Footer from '../components/Footer';
 
+import {ResDb} from '../common/Db';
 
 
 const {
@@ -15,10 +16,19 @@ class Res extends Component {
         super(props);
         document.title ='资源详情';
         this.state = {
-            content:this.props.location.query || {}
+            id:parseInt(this.props.match.params.id),
+            content:null
         }
     }
 
+    componentWillMount() {
+        var model = ResDb.filter(item => {
+            return item.Id === this.state.id;
+        })
+        this.setState({
+            content:model[0]
+        })
+    }
     render() {
         return (
             <Page infiniteLoader={false} ptr = {true}  transition={true}>
@@ -51,7 +61,7 @@ class Res extends Component {
                         </section>
                     </section>
                 </Article>
-                <Dialog ref={ref=>this.dialog=ref}/>
+                <Footer/>
             </Page>
         );
     }

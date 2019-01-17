@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
+import Footer from '../components/Footer';
 import Article from '../components/Article';
 
 const {Page} = WeUI;
@@ -25,6 +26,7 @@ class UnifyLend extends Component {
         return (
             <Page infiniteLoader={false} ptr = {true}  transition={true}>
                 <Article content={this.state.content}/>
+                <Footer/>
             </Page>
         );
     }

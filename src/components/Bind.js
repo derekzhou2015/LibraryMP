@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
 import Exception from '../common/Exception';
-import Toptips from '../components/Toptips';
-
+import $ from 'JQuery';
+import LogoImgSrc from '../images/common/logo.png';
 
 const {
     Form,
@@ -23,7 +23,6 @@ class Bind extends Component {
         this.state = {
 
         }
-        this.toptip = React.createRef();
     }  
 
     handleClick = e => {
@@ -40,8 +39,7 @@ class Bind extends Component {
             this.props.toggleBind(true);
             
         }catch(e){
-            console.log(e);
-            this.toptip.show(e.message);
+            $.toptip(e.message,1000, 'error');
             e.focus();
         }
         
@@ -50,8 +48,8 @@ class Bind extends Component {
     render() {
         return (
             <div>
-                <div className='bind-logo{'>
-                    <img src='../images/logo.png' alt='222' />
+                <div className='bind-logo'>
+                    <img src={LogoImgSrc} alt='上海少年儿童图书馆' />
                 </div>
                 <CellsTitle>请用图书馆借阅证账号和密码登录</CellsTitle>
                 <Form >
@@ -87,7 +85,6 @@ class Bind extends Component {
                         绑定
                     </Button>
                 </ButtonArea>
-                <Toptips ref={ref=>this.toptip=ref} type='warn'/>
             </div>
         );
     }

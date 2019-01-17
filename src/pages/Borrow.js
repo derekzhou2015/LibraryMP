@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
-
-
+import Footer from '../components/Footer';
 const {
     Page,
     Panel,
@@ -187,6 +186,7 @@ class Borrow extends Component {
                         </Panel>
                     </TabBody>
                 </Tab>
+                <Footer/>
             </Page>
         );
     }

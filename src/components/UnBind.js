@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
-import Dialog from '../components/Dialog';
+import $ from 'JQuery';
+
 const {
     Msg
 } = WeUI
@@ -14,11 +15,9 @@ class Bind extends Component {
 
     handleClick = e => {
         e.preventDefault();
-        this.dialog.confirm('提示',"信息删除成功",(r)=>{
-            if(r){
-                this.props.toggleBind(false);
-            }
-        })
+        $.confirm("您确定要解绑读者证吗？",()=>{
+            this.props.toggleBind(false);
+        });
     }
 
     render() {
@@ -34,7 +33,6 @@ class Bind extends Component {
                     title="读者证已绑定"
                     description="点击下方按钮可以解除读者证绑定"
                     buttons={msgBtns}/>
-                <Dialog ref={ref=>this.dialog=ref}/>
             </div>
         );
     }

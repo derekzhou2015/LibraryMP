@@ -30,7 +30,7 @@ class Article extends Component {
                     </section>
                 </section>
             </WeUIArticle>
-        );
+        )
     }
 }
 

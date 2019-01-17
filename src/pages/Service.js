@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
+import Footer from '../components/Footer';
 import ServiceGrids from '../components/ServiceGrids';
 
 const {
@@ -16,6 +17,7 @@ class Service extends Component {
         return (
             <Page infiniteLoader={false} ptr = {false}  transition={true} >
                 <ServiceGrids/>
+                <Footer fixed={true}/>
             </Page>
         );
     }

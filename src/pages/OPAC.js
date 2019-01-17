@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
+import Footer from '../components/Footer';
+
+import {BookDb} from '../common/Db';
 
 
 
@@ -16,106 +19,14 @@ const {
     MediaBoxDescription
 } = WeUI
 
-const db = [
-    {
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        CallNo:'I242.4/4921-9#2'
-    }
-]
-
 class OPAC extends Component {
     constructor(props){
         super(props);
         document.title ='书目检索';
         this.state = {
-            searchText:'',
-            results:db,
-            total:db.length
+            searchText: '',
+            results: BookDb || [],
+            total: BookDb ? BookDb.length : 0
         }
     }
 
@@ -161,6 +72,7 @@ class OPAC extends Component {
                     }
                     </PanelBody>
                 </Panel>
+                <Footer/>
             </Page>
         );
     }

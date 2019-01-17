@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
-import Dialog from '../components/Dialog';
-
-
+import $ from 'JQuery';
+import Footer from '../components/Footer';
 
 const {
     Page,
@@ -61,7 +60,6 @@ class Renew extends Component {
             total: db.length,
             disabled: false
         }
-        this.dialog = React.createRef();
     }
 
     hasRenewState = ()=>{
@@ -70,26 +68,22 @@ class Renew extends Component {
         })
     }
 
-
     componentDidMount() {
         this.setState({
             disabled:!this.hasRenewState()
         })
     }
  
-
     handleClick(e){
         e.preventDefault();
-        this.dialog.confirm('提示','您确定要续借已借图书吗？',r => {
-            if(r){
-                this.state.results.forEach(el=>{
-                    el.State='已续借';
-                })
-                this.setState({
-                    disabled:!this.hasRenewState()
-                })
-            }
-        });
+        $.confirm("您确定要续借已借图书吗？",()=>{
+            this.state.results.forEach(el=>{
+                el.State='已续借';
+            })
+            this.setState({
+                disabled:!this.hasRenewState()
+            })
+        })
     }
 
     render() {
@@ -126,10 +120,9 @@ class Renew extends Component {
                 <ButtonArea>
                     <Button onClick={this.handleClick.bind(this)}  disabled={this.state.disabled}>续借</Button>
                 </ButtonArea>
-                <Dialog ref={ref=>this.dialog=ref}/>
+                <Footer/>
             </Page>
         );
     }
 }
-
 export default Renew;

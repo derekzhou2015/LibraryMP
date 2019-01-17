@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
+import Footer from '../components/Footer';
+import {ResDb} from '../common/Db';
 
 
 
@@ -15,117 +17,6 @@ const {
     PanelBody
 } = WeUI;
 
-const res = [
-    {
-        Id:1,
-        Title:'贝贝国学',
-        Cover:'../images/temp/bbgx.png',   
-        Category:'国学',
-        ReadCount:Math.round(Math.random()*10000),
-        ByDate:'2019-01-15',
-        State:'已订购',
-        Description:'-暂无内容-',
-        Links: [{
-            Name: '外网访问',
-            Url:'http://www.bbguoxue.cn/wechat/',
-            Tips:''
-        },{
-            Name: '内网访问',
-            Url:'http://www.bbguoxue.cn/wechat/',
-            Tips:''
-        }]
-    },{
-        Id:2,
-        Title:'妙趣手工坊',
-        Cover:'../images/temp/mqsgf.png',   
-        Category:'视频',
-        ReadCount:Math.round(Math.random()*10000),
-        ByDate:'2019-01-15',
-        State:'已订购',
-        Description:'-暂无内容-',
-        Links: [{
-            Name: '外网访问',
-            Url:'http://www.libdiy.cn/wechat',
-            Tips:''
-        },{
-            Name: '内网访问',
-            Url:'http://www.libdiy.cn/wechat',
-            Tips:''
-        }]
-    },{
-        Id:3,
-        Title:'创世神话',
-        Cover:'../images/temp/cssh.png',   
-        Category:'视频',
-        ReadCount:Math.round(Math.random()*10000),
-        ByDate:'2019-01-15',
-        State:'已订购',
-        Description:'-暂无内容-',
-        Links: [{
-            Name: '外网访问',
-            Url:'http://cssh.yibaolib.com/phone/index.html',
-            Tips:''
-        },{
-            Name: '内网访问',
-            Url:'http://cssh.yibaolib.com/phone/index.html',
-            Tips:''
-        }]
-    },{
-        Id:4,
-        Title:'贝贝国学',
-        Cover:'../images/temp/bbgx.png',   
-        Category:'国学',
-        ReadCount:Math.round(Math.random()*10000),
-        ByDate:'2019-01-15',
-        State:'已订购',
-        Description:'-暂无内容-',
-        Links: [{
-            Name: '外网访问',
-            Url:'http://www.bbguoxue.cn/wechat/',
-            Tips:''
-        },{
-            Name: '内网访问',
-            Url:'http://www.bbguoxue.cn/wechat/',
-            Tips:''
-        }]
-    },{
-        Id:5,
-        Title:'妙趣手工坊',
-        Cover:'../images/temp/mqsgf.png',   
-        Category:'视频',
-        ReadCount:Math.round(Math.random()*10000),
-        ByDate:'2019-01-15',
-        State:'已订购',
-        Description:'-暂无内容-',
-        Links: [{
-            Name: '外网访问',
-            Url:'http://www.libdiy.cn/wechat',
-            Tips:''
-        },{
-            Name: '内网访问',
-            Url:'http://www.libdiy.cn/wechat',
-            Tips:''
-        }]
-    },{
-        Id:6,
-        Title:'创世神话',
-        Cover:'../images/temp/cssh.png',   
-        Category:'视频',
-        ReadCount:Math.round(Math.random()*10000),
-        ByDate:'2019-01-15',
-        State:'已订购',
-        Description:'-暂无内容-',
-        Links: [{
-            Name: '外网访问',
-            Url:'http://cssh.yibaolib.com/phone/index.html',
-            Tips:''
-        },{
-            Name: '内网访问',
-            Url:'http://cssh.yibaolib.com/phone/index.html',
-            Tips:''
-        }]
-    }
-]
 
 class UnifyLend extends Component {
     constructor(props){
@@ -133,8 +24,8 @@ class UnifyLend extends Component {
         document.title ='数字资源';
         this.state = {
             searchText:'',
-            results:res,
-            total:res.length
+            results:ResDb,
+            total:ResDb.length
         }
     }
 
@@ -142,12 +33,9 @@ class UnifyLend extends Component {
 
     }
 
-    handleClick(item,e){
+    handleClick(id,e){
         e.preventDefault();
-        this.props.history.push({
-            pathname:`/service/resources/${item.Id}`,
-            query:item
-        });
+        this.props.history.push(`/service/resources/${id}`);
     }
 
     render() {
@@ -165,20 +53,19 @@ class UnifyLend extends Component {
                     <PanelBody>
                     <Grids>
                     {
-                        this.state.results.map((item,index)=>{
+                        this.state.results.map((item)=>{
                             return(
-                                <Grid key = {item.Id} onClick={this.handleClick.bind(this,item)}>
+                                <Grid key = {item.Id} onClick={this.handleClick.bind(this,item.Id)}>
                                     <GridIcon className='res'><img src={item.Cover} alt={item.Title}/></GridIcon>
                                     <GridLabel>{item.Title}</GridLabel>
                                 </Grid>
                             )
                         })
-                        
                     }
                 </Grids>
                     </PanelBody>
                 </Panel>
-                
+                <Footer/>
             </Page>
         );
     }

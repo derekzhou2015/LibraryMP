@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import WeUI from 'react-weui';
 import Bind from '../components/Bind';
 import UnBind from '../components/UnBind';
+import Footer from '../components/Footer';
 
 const {
     Page
@@ -36,13 +37,14 @@ class CardBind extends Component {
 
     render() {
         return (
-            <Page infiniteLoader={false} ptr = {false}  transition={true} >
+            <Page infiniteLoader={true} ptr = {false}  transition={true} >
                 {
                     this.state.bound ? 
                         <UnBind toggleBind = { this.ToggleBind.bind(this) }/>   
                         :
                         <Bind toggleBind = { this.ToggleBind.bind(this) }/>                      
                 }
+                <Footer/>
             </Page>
 
         );

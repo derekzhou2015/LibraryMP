@@ -1,3 +1,20 @@
+div.weui-page{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1;
+    height: 100%;
+    z-index: 999;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+}
+
 /*******************************************************************/
 .article-cover-container{
     padding: 0;
@@ -8,6 +25,15 @@
 
 .article-cover-container img{
     margin:0;
+}
+
+.article-cover-container.no-bgcolor{
+    background-color: transparent;
+}
+
+.article-content p {
+    text-indent: 2em;
+    line-height: 1.7;
 }
 /*******************************************************************/
 .book-cover-container{
@@ -78,6 +104,100 @@
 .gary{
     color: gray;
 }
+.orange{
+    color:orange;
+}
 .pannel.weui-panel{
     margin-top: 0;
+}
+/*******************************************************************/
+.about-notice section.item{
+    position: relative;
+    margin: 50px 10px 0 10px;
+    padding: 20px 10px;
+    background-color: white;
+    box-shadow: 0 0 10px #e0e0e0;
+}
+
+.about-notice section.item:before{
+    content: " ";
+    position: absolute;
+    top:-25px;
+    left:-13px;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 100px;
+}   
+
+.about-notice section.item-1:before{
+    background-image: url('../images//notice/notice_know1.png');
+} 
+.about-notice section.item-2:before{
+    background-image: url('../images//notice/notice_know2.png');
+} 
+.about-notice section.item-3:before{
+    background-image: url('../images//notice/notice_know3.png');
+} 
+.about-notice section.item-4:before{
+    background-image: url('../images//notice/notice_know4.png');
+} 
+.about-notice section.item-5:before{
+    background-image: url('../images//notice/notice_know5.png');
+} 
+.about-notice section.item-6:before{
+    background-image: url('../images//notice/notice_know6.png');
+} 
+.about-notice section.item-7:before{
+    background-image: url('../images//notice/notice_know7.png');
+} 
+.about-notice .contact{
+    margin-top: 30px;
+}
+
+
+/*******************************************************************/
+.us-other p{
+    position: relative;
+    padding-left: 30px;
+}
+.us-other p::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 25px;
+}
+.us-other p.url::before{
+    background-image: url('../images/us/us_item2.png');
+}
+.us-other p.weixin::before{
+    background-image: url('../images/us/us_item3.png');
+}
+.us-other p.weibo::before{
+    background-image: url('../images/us/us_item4.png');
+}
+.us-other p.mail::before{
+    background-image: url('../images/us/us_item5.png');
+}
+.us-other p.addr::before{
+    background-image: url('../images/us/us_item6.png');
+}
+.us-other p.zip::before{
+    background-image: url('../images/us/us_item7.png');
+}
+
+/*******************************************************************/
+.map-container{
+    display: block;
+    height: 100%;
+    width:100%;
+}
+.map-info{
+    margin: 0;
+    width: 107.8px;
+    height:74.2px;
 }
