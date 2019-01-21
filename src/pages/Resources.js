@@ -18,7 +18,7 @@ const {
 } = WeUI;
 
 
-class UnifyLend extends Component {
+class Resources extends Component {
     constructor(props){
         super(props);
         document.title ='数字资源';
@@ -30,7 +30,7 @@ class UnifyLend extends Component {
     }
 
     handleChange(text,e){
-
+        
     }
 
     handleClick(id,e){
@@ -71,4 +71,4 @@ class UnifyLend extends Component {
     }
 }
 
-export default UnifyLend;
+export default Resources;

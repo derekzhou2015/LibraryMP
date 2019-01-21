@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import WeUI from 'react-weui';
 import Footer from '../components/Footer';
+
+import {BorrowDb} from '../common/Db';
 const {
     Page,
     Panel,
@@ -17,103 +19,6 @@ const {
     TabBody
 } = WeUI
 
-const db2 = [
-    {
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    }
-]
-
-const db1 = [
-    {
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    },{
-        Id:1,
-        Cover: '../../images/temp/xyj.png',
-        Title: '西游记',
-        Author: '吴承恩',
-        Publisher:'黑龙江人民出版社',
-        PublishDate:'1996',
-        ISBN:'9787121317385',
-        ByDate:'2019-01-14 18:45'
-    }
-]
 
 class Borrow extends Component {
     constructor(props){
@@ -121,21 +26,30 @@ class Borrow extends Component {
         document.title ='借阅信息';
         this.state = {
             currentTab:0,
-            results:db1||[],
-            total:db1.length
+            results:[],
+            total:0
         }
     }   
+
+    componentDidMount() {
+        let db = this.getBorrowDb(this.state.currentTab !== 0);
+        this.setState({
+            results:db,
+            total:db.length
+        })
+    }
+    
 
     handleChange(e){
         console.log(this);
     }
 
-    handleNavBarItemClick(id,e){
+    handleNavBarItemClick(navId,e){
         e.preventDefault();
-        if(this.state.currentTab !== id){
-            var db = id === 0 ? db1 : db2;
+        if(this.state.currentTab !== navId){
+            let db = this.getBorrowDb(navId !== 0);
             this.setState({
-                currentTab:id,
+                currentTab:navId,
                 results:db,
                 total:db.length
             });
@@ -145,6 +59,14 @@ class Borrow extends Component {
     handleClick(id,e){
         e.preventDefault();
         this.props.history.push(`/service/borrow/${id}`);
+    }
+
+    getBorrowDb(isReturn){
+        let array = BorrowDb.filter(item=>{
+            return item.IsReturn === isReturn;
+        })
+
+        return array;
     }
 
     render() {
@@ -164,18 +86,20 @@ class Borrow extends Component {
                             </PanelHeader>
                             <PanelBody>
                             {
-                                this.state.results.map((item,index)=>{
+                                this.state.results.map((item)=>{
                                     return (
-                                        <MediaBox key = {item + index} type='appmsg' onClick={this.handleClick.bind(this,(index+1))}>
+                                        <MediaBox key = {item.Id} type='appmsg' onClick={this.handleClick.bind(this,item.Id)}>
                                             <MediaBoxHeader><img src={item.Cover} alt={item.Title}/></MediaBoxHeader>
                                             <MediaBoxBody>
                                                 <MediaBoxTitle>{item.Title}</MediaBoxTitle>
                                                 <MediaBoxDescription>
-                                                    {item.Author} {item.Publisher} {item.PublishDate}
-                                                    <br/>
-                                                    ISBN:{item.ISBN}
-                                                    <br/>
-                                                    {this.state.currentTab === 0 ? '借阅时间':'归还时间'}：{item.ByDate}
+                                                    {item.Author} {item.Publisher} {item.PublishDate}     
+                                                </MediaBoxDescription>
+                                                <MediaBoxDescription>
+                                                    {`ISBN:${item.ISBN}`}
+                                                </MediaBoxDescription>
+                                                <MediaBoxDescription>
+                                                    {item.IsReturn ? `归还时间:${item.ReturnDate}`:`借阅时间:${item.ByDate}`} 
                                                 </MediaBoxDescription>
                                             </MediaBoxBody>
                                         </MediaBox>

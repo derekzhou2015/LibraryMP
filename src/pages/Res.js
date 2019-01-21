@@ -7,7 +7,9 @@ import {ResDb} from '../common/Db';
 
 const {
     Page,
-    Article
+    Article,
+    Flex,
+    FlexItem
 } = WeUI
 
 
@@ -31,11 +33,20 @@ class Res extends Component {
     }
     render() {
         return (
-            <Page infiniteLoader={false} ptr = {true}  transition={true}>
+            <Page infiniteLoader={false} ptr = {false}  transition={true}>
                 <Article>
                     <h1>{this.state.content.Title}</h1>
                     <section>
-                        <h2>类别：{this.state.content.Category} 阅读：{this.state.content.ReadCount}</h2>
+                        <section>
+                            <Flex>
+                                <FlexItem>类别：{this.state.content.Category}</FlexItem>
+                                <FlexItem>状态：{this.state.content.State}</FlexItem>
+                            </Flex>
+                            <Flex>
+                                <FlexItem>收录：{this.state.content.ByDate}</FlexItem>
+                                <FlexItem>阅读：{this.state.content.ReadCount}</FlexItem>
+                            </Flex>
+                        </section>
                         <h3>{this.state.content.CallNo}</h3>
                         {
                             this.state.content.Cover && 
@@ -43,17 +54,15 @@ class Res extends Component {
                                 <img src={'../' + this.state.content.Cover} alt={this.state.content.Title}/>
                             </section>
                         }
+                        <section>
                         {
-                            this.state.content.Links &&
+                            this.state.content.Links && 
                             this.state.content.Links.map((item,index)=>{
                                 return (
-                                    <p key={index}>{item.Name}:<a href={item.Url} title={item.Tips}>点击进入</a></p>
+                                    <a key={index} href={item.Url} title={item.Tips} className="weui-btn weui-btn_primary">{item.Name}点击进入</a>
                                 )
                             })
                         }
-                        <section>
-                            <p>收录时间:{this.state.content.ByDate}</p>
-                            <p>订购状态:{this.state.content.State}</p>
                         </section>
                         <section>
                             <h3>简介：</h3>

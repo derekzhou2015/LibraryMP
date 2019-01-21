@@ -41,6 +41,13 @@ class ServiceGrids extends Component {
                     this.props.history.push('/service/borrow')
                 }
             }, {
+                icon: <img src = 'images/icon9.png' alt = '咨询建议' /> ,
+                label: '咨询建议',
+                onClick: e => {
+                    e.preventDefault();
+                    this.props.history.push('/service/consult')
+                }
+            }, {
                 icon: <img src = 'images/icon5.png' alt = '通借通还' /> ,
                 label: '通借通还',
                 onClick: e => {

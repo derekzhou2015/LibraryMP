@@ -201,3 +201,10 @@ div.weui-page{
     width: 107.8px;
     height:74.2px;
 }
+/*******************************************************************/
+.ask.weui-media-box__title{
+    white-space:normal
+}
+.reply.weui-media-box__desc{
+    -webkit-line-clamp:5;
+}

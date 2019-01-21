@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 const {Page} = WeUI;
 
-class Info extends Component {
+class NewsInfo extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -23,7 +23,6 @@ class Info extends Component {
         this.setState({
             content:model[0]
         })
-
     }
     
 
@@ -37,4 +36,4 @@ class Info extends Component {
     }
 }
 
-export default Info;
+export default NewsInfo;

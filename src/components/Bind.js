@@ -39,10 +39,10 @@ class Bind extends Component {
             this.props.toggleBind(true);
             
         }catch(e){
-            $.toptip(e.message,1000, 'error');
-            e.focus();
+            $.alert(e.message,()=>{
+                e.focus();
+            });
         }
-        
     }
 
     render() {

@@ -59,7 +59,7 @@ class AboutGrids extends Component {
                 label: '常见问题',
                 onClick: e => {
                     e.preventDefault();
-                    this.props.history.push('/service');
+                    this.props.history.push('/about/faq');
                 }
             }, {
                 icon: <img src = 'images/icon38.png' alt = '电子地图' /> ,

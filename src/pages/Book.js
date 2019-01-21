@@ -34,9 +34,7 @@ class Book extends Component {
             book:book
         }
     }
-    componentDidMount() {
-        console.log(window.innerHeight,document.body.scrollHeight);
-    }
+
     render() {
         return (
             <Page infiniteLoader={false} ptr = {true}  transition={true}>

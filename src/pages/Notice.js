@@ -53,7 +53,6 @@ class Notice extends Component {
                                 <p>中学部： 021-62189699</p>
                                 <p>投诉电话： 62172556（周一至周五）</p>
                             </section>
-
                         </section>
                     </section>
                     

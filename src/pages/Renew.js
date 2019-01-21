@@ -101,15 +101,9 @@ class Renew extends Component {
                                     <MediaBoxHeader><img src={item.Cover} alt={item.Title}/></MediaBoxHeader>
                                     <MediaBoxBody>
                                         <MediaBoxTitle>{item.Title}</MediaBoxTitle>
-                                        <MediaBoxDescription>
-                                            {item.Author} {item.Publisher} {item.PublishDate}
-                                            <br/>
-                                            ISBN:{item.ISBN}
-                                            <br/>
-                                            借阅时间：{item.ByDate}
-                                            <br/>
-                                            状态：<span className = {item.State === '可续借' ? 'green' : 'gary'}>{item.State}</span>
-                                        </MediaBoxDescription>
+                                        <MediaBoxDescription>{item.Author} {item.Publisher} {item.PublishDate}</MediaBoxDescription>
+                                        <MediaBoxDescription>ISBN:{item.ISBN}</MediaBoxDescription>
+                                        <MediaBoxDescription>状态：<span className = {item.State === '可续借' ? 'green' : 'gary'}>{item.State}</span></MediaBoxDescription>                                     
                                     </MediaBoxBody>
                                 </MediaBox>
                             )
